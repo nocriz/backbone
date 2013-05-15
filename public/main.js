@@ -10,6 +10,7 @@ require.config({
     underscore: 'libs/underscore/underscore-dev-1.4.1',
     backbone: 'libs/backbone/backbone-min-0.9.2',
     bootstrap:'libs/bootstrap/js/bootstrap.min',
+    //dropdown:'libs/bootstrap/js/bootstrap-dropdown',
     store:'memorystore',
     text: 'libs/require/text',
     //sha256: 'libs/hash/sha256',
@@ -28,6 +29,12 @@ require.config({
         deps: ['jquery'],
         exports:'Bootstrap'
       },
+      /*
+      'dropdown':{
+        deps: ['jquery','bootstrap'],
+        exports:'Dropdown'
+      },
+      */
       'store':{
         deps: ['backbone'],
         exports:'Store'
