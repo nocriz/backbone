@@ -28,7 +28,7 @@ define([
 
     change: function (event) {
         // Remove any existing alert message
-        utils.hideAlert();
+        app_router.hideAlert();
 
         // Apply the change to the model
         var target = event.target;
@@ -39,23 +39,24 @@ define([
         // Run validation rule (if any) on changed item
         var check = this.model.validateItem(target.id);
         if (check.isValid === false) {
-            utils.addValidationError(target.id, check.message);
+            app_router.addValidationError(target.id, check.message);
         } else {
-            utils.removeValidationError(target.id);
+            app_router.removeValidationError(target.id);
         }
     },
 
     beforeSave: function () {
+        console.info(this);
         var self = this;
         var check = this.model.validateAll();
         if (check.isValid === false) {
-            utils.displayValidationErrors(check.messages);
+            app_router.displayValidationErrors(check.messages);
             return false;
         }
         // Upload picture file if a new file was dropped in the drop area
         if (this.pictureFile) {
             this.model.set("picture", this.pictureFile.name);
-            utils.uploadFile(this.pictureFile,
+            app_router.uploadFile(this.pictureFile,
                 function () {
                     self.saveWine();
                 }
@@ -71,11 +72,12 @@ define([
         this.model.save(null, {
             success: function (model) {
                 self.render();
-                app.navigate('wines/' + model.id, false);
-                utils.showAlert('Success!', 'Wine saved successfully', 'alert-success');
+                //console.info(app_router);
+                app_router.navigate('wines/' + model.id, false);
+                app_router.showAlert('Success!', 'Wine saved successfully', 'alert-success');
             },
             error: function () {
-                utils.showAlert('Error', 'An error occurred while trying to delete this item', 'alert-error');
+                app_router.showAlert('Error', 'An error occurred while trying to delete this item', 'alert-error');
             }
         });
     },

@@ -13,6 +13,7 @@ define([
   'text!templates/commons/footer.html'
 ], function(Config,$, _, Backbone, Store, Bootstrap, WineCollection, WineModel, WineView, WineListView, headerTemplate, footerTemplate){
   var Wine = Backbone.View.extend({
+
     initialize: function () {
       this.WineCollection = WineCollection;
       $('.header').html(headerTemplate);
@@ -44,7 +45,7 @@ define([
     add:function(){
       var wine = new WineModel();
       $('#content').html(new WineView({model: wine}).el);
-    }
+    },
   });
   return new Wine;
 });

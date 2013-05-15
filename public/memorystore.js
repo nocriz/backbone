@@ -293,6 +293,7 @@ Backbone.sync = function (method, model, options) {
             break;
         case "update":
             resp = store.update(model);
+            console.info(resp);
             break;
         case "delete":
             resp = store.destroy(model);
