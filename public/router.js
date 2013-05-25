@@ -3,9 +3,8 @@ define([
   'config',
   'jquery',
   'underscore',
-  'backbone',
-  'store'
-], function(Config, $, _, Backbone, Store){
+  'backbone'
+], function(Config, $, _, Backbone){
 
   var AppRouter = Backbone.Router.extend({
    showAction:function(){
@@ -88,6 +87,11 @@ define([
   var initialize = function(){
     var routes = Config.loadJson('config/routes.json');
     app_router = new AppRouter({routes:routes});
+    var func = Config.loadJson('config/functions.json');
+    for(i in func){
+      var json = eval('('+func[i]+')');
+      //app_router.push({i:json[i]});
+    }
 
     //Backbone.emulateHTTP = true;
     //Backbone.emulateJSON = true;

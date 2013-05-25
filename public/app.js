@@ -4,9 +4,8 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'store',
   'router', 
-], function(Config,$, _, Backbone, Store, Router){
+], function(Config,$, _, Backbone, Router){
   var initialize = function(){
     // Pass in our Router module and call it's initialize function    
     Router.initialize();

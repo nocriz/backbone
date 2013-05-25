@@ -14,7 +14,7 @@ define([
         "change"        : "change",
         "click .save"   : "beforeSave",
         "click .delete" : "deleteWine",
-        "drop #picture" : "dropHandler"
+        "drop" : "drop"
     },
 
     initialize: function () {
@@ -92,7 +92,7 @@ define([
         return false;
     },
 
-    dropHandler: function (event) {
+    drop: function (event) {
         event.stopPropagation();
         event.preventDefault();
         var e = event.originalEvent;
