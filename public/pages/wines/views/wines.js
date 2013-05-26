@@ -4,14 +4,13 @@ define([
   'underscore',
   'backbone',
   'bootstrap',
-  'store',
   'pages/wines/collections/wine',
   'pages/wines/models/wine',
   'pages/wines/views/WineView',
   'pages/wines/views/WineListView',
   'text!templates/commons/header.html',
   'text!templates/commons/footer.html'
-], function(Config,$, _, Backbone, Store, Bootstrap, WineCollection, WineModel, WineView, WineListView, headerTemplate, footerTemplate){
+], function(Config,$, _, Backbone, Bootstrap, WineCollection, WineModel, WineView, WineListView, headerTemplate, footerTemplate){
   var Wine = Backbone.View.extend({
 
     initialize: function () {

@@ -89,6 +89,14 @@
 					}
 				}
 			},
+			loadFunction:function(router){
+				var func = this.loadJson(this.dirname+'/config/functions.json');
+			    for(i in func){
+			      var json = eval('('+func[i]+')');
+			      eval('var f='+json[i]+';');
+			      app_router.on('route:'+i,f);
+			    }
+			},
 			fileExists:function(f,t){
 				var $return;
 		        Config.ajax({

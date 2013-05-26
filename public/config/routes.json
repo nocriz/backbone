@@ -1,5 +1,6 @@
 {
   // Define some URL routes
+  "ir/:page/run":"showRun",
   "ir/:page": "showAction",
   "ir/:page/about":"showAbout",
   "ir/:page/page/:num":"showPage",

@@ -1,3 +1,7 @@
 {
-	"run":"{'run': 'function() { console.log(\\'running...\\');$.ajax({type:\\'GET\\',url:\\'http://localhost/\\'}); }'}"
+    "showAbout":"{'showAbout':'function(){var p=arguments[0];if(p)require([\\'pages/\\'+p+\\'/views/about\\'],function(v) {v.render();});}'}",
+    "showAction":"{'showAction':'function(){var p=arguments[0];var id=arguments[1];if(p)require([\\'pages/\\'+p+\\'/views/\\'+p],function(v){if(!id)v.render();else v.render(id)})}'}",
+    "showPage":"{'showPage':'function(){var a=arguments[0],b=arguments[1];a&&require([\\'pages/\\'+a+\\'/views/\\'+a],function(a){a.render(),a.page(b)})}'}",
+    "showAdd":"{'showAdd':'function(){var a=arguments[0];a&&require([\\'pages/\\'+a+\\'/views/\\'+a],function(a){a.add()})}'}",
+    "showDefault":"{'showDefault':'function(){this.navigate(\\'//ir/wines\\',!0)}'}"
 }

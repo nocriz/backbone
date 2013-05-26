@@ -7,6 +7,7 @@ define([
 ], function(Config, $, _, Backbone){
 
   var AppRouter = Backbone.Router.extend({
+   /*
    showAction:function(){
       var page = arguments[0];
       var id = arguments[1];
@@ -20,6 +21,8 @@ define([
          });
       }
     },
+    */
+    /*
     showAbout:function(){
       var page = arguments[0];
       if(page){
@@ -28,6 +31,8 @@ define([
          });
       }
     },
+    */
+    /*
     showPage:function(){
      var page = arguments[0];
      var num = arguments[1];
@@ -49,6 +54,7 @@ define([
     showDefault:function(){
       this.navigate('//ir/wines', true);
     },
+    */
     _extractParameters: function(route, fragment) {
       //console.info(fragment.split('/')[0]);
       var params = route.exec(fragment);
@@ -141,11 +147,7 @@ define([
   var initialize = function(){
     var routes = Config.loadJson('config/routes.json');
     app_router = new AppRouter({routes:routes});
-    var func = Config.loadJson('config/functions.json');
-    for(i in func){
-      var json = eval('('+func[i]+')');
-      //app_router.push({i:json[i]});
-    }
+    Config.loadFunction(app_router);
 
     //Backbone.emulateHTTP = true;
     //Backbone.emulateJSON = true;
