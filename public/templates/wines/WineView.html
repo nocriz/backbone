@@ -97,8 +97,9 @@
 
                 <div class="span3">
                     <div class="well">
-                        <p><img id="picture" width="180" src="<%= picture === null ? 'uploads/generic.jpg' : 'uploads/' + picture %>"/></p>
-
+                        <div class="dropzone">
+                            <img id="picture" width="180" src="<%= picture === null ? 'uploads/generic.jpg' : 'uploads/' + picture %>"/>
+                        </div>
                         <p>To change the picture, drag a new picture from your file system onto the box above.</p>
                     </div>
                 </div>

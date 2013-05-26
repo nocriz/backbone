@@ -36,14 +36,36 @@ $app->get('/wines', function () {
     echo json_encode($wines);
 });
 
+$app->get('/wines/(:num)', function ($id) {
+    $wines  = array(
+         'id'=>1
+            ,'name'=> "CHATEAU DE SAINT COSME"
+            ,'year'=> "2009"
+            ,'grapes'=> "Grenache / Syrah"
+            ,'country'=> "France"
+            ,'region'=> "Southern Rhone"
+            ,'description'=> "The aromas of fruit and spice give one a hint of the light drinkability of this lovely wine, which makes an excellent complement to fish dishes."
+            ,'picture'=> "saint_cosme.jpg"
+        );
+    echo json_encode($wines);
+});
+
 //POST route
 $app->post('/', function () {
+  $app = \Slim\Slim::getInstance();
+  $res = $app->response();
+  $req = $app->request();
    echo "POST";
+   echo json_decode($req->getBody());
 });
 
 //PUT route
-$app->put('/', function () {
+$app->put('/wines/(:num)', function ($id) {
+  $app = \Slim\Slim::getInstance();
+  $res = $app->response();
+  $req = $app->request();
    echo "PUT";
+   var_dump($req->getBody());
 });
 
 //DELETE route

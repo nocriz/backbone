@@ -17,9 +17,9 @@
 # "index.php" front controller, keeping the query string intact
 
 <IfModule mod_rewrite.c>
-	# RewriteBase /backbone/public/
-	# RewriteCond %{REQUEST_FILENAME} !-f
-	# RewriteRule ^(.*)$ public/$1 [QSA,L]
+	RewriteBase /backbone/public/
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^(.*)$ public/$1 [QSA,L]
 </IfModule>
 
 

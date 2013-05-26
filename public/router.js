@@ -55,6 +55,26 @@ define([
       params.shift();
       return params;
     },
+    uploadFile: function (file, callbackSuccess) {
+        var self = this;
+        var data = new FormData();
+        data.append('file', file);
+        $.ajax({
+            url: 'src/upload.php',
+            type: 'POST',
+            data: data,
+            processData: false,
+            cache: false,
+            contentType: false
+        })
+        .done(function () {
+            console.log(file.name + " uploaded successfully");
+            callbackSuccess();
+        })
+        .fail(function () {
+            self.showAlert('Error!', 'An error occurred while uploading ' + file.name, 'alert-error');
+        });
+    },
     displayValidationErrors: function (messages) {
         for (var key in messages) {
             if (messages.hasOwnProperty(key)) {
@@ -81,6 +101,40 @@ define([
     },
     hideAlert: function() {
         $('.alert').hide();
+    },
+    jsonResponse: function(code){
+      jsonCodes = [],
+      jsonCodes[400] = 'Unrecognized command',
+      jsonCodes[401] = 'Permission denied',
+      jsonCodes[402] = 'Missing argument',
+      jsonCodes[401] = 'Incorrect password',
+      jsonCodes[404] = 'Account not found',
+      jsonCodes[405] = 'Email not validated',
+      jsonCodes[408] = 'Token expired',
+      jsonCodes[411] = 'Insufficient privileges',
+      jsonCodes[500] = 'Internal server error';
+      return jsonCodes[code];
+    },
+    /*
+     * COOKIE HELPERS
+     */
+    getCookie: function(c_name) {
+        var i, x, y, ARRcookies = document.cookie.split(";");
+          
+          for (i = 0; i < ARRcookies.length; i++) {
+            x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
+            y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
+            x = x.replace(/^\s+|\s+$/g,"");
+            if (x === c_name) {
+              return unescape(y);
+            };
+          };
+    },
+    setCookie: function(c_name, value) {
+    var exdate = new Date();
+      exdate.setHours(exdate.getHours() + 1);
+      var c_value = escape(value) + "; expires=" + exdate.toUTCString();
+      document.cookie=c_name + "=" + c_value;
     }
   });
 

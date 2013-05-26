@@ -21,9 +21,6 @@
 					Config.settings = settings;
 				});
 			},
-			get:function(key){
-				return Config.settings.key; 
-			},
 			loadJson:function(f,c){
 				var $return;
 				try{

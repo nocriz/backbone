@@ -9,7 +9,6 @@ define([
   'pages/wines/views/paginator'
 ], function(Config,$, _, Backbone, Bootstrap, WineCollection , wineViewTemplate, Paginator){
   var WineView = Backbone.View.extend({
-    
     events: {
         "change"        : "change",
         "click .save"   : "beforeSave",
@@ -19,6 +18,7 @@ define([
 
     initialize: function () {
         this.render();
+        var body = $('body');
     },
 
     render: function () {
@@ -91,8 +91,12 @@ define([
         });
         return false;
     },
-
-    drop: function (event) {
+    drop : function(e){
+        e.preventDefault();
+        var files = e.originalEvent.dataTransfer.files;
+        console.info(files);
+    },
+    dropHandler: function (event) {
         event.stopPropagation();
         event.preventDefault();
         var e = event.originalEvent;

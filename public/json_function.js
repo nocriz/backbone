@@ -8,4 +8,9 @@ for(i in func){
   var json = eval('('+func[i]+')');
   eval('var '+i+'='+json[i]+';');
 }
-run();
+
+var r = {
+	"ir":"run"
+};
+var action = 'ir';
+eval(r[action]+'()');
