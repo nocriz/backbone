@@ -15,7 +15,10 @@ define([
 
     initialize: function () {
       this.WineCollection = WineCollection;
-      $('.header').html(headerTemplate);
+      var data = {
+        baseurl:Config.baseurl
+      };
+      $('.header').html(_.template(headerTemplate,data));
       $('.footer').html(footerTemplate);
     },
 

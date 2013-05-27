@@ -1,0 +1,10 @@
+{
+	"active_url":"Não é uma URL válida.",
+	"after":"Deve ser uma data após :date.",
+	"alpha":"Só pode conter letras.",
+	"alpha_dash":"Só pode conter letras, números e traços.",
+	"alpha_num":"Só pode conter letras e números.",
+	"before":"Deve ser uma data anterior à :date.",
+	"require_email":"Você deve informar um e-mail.",
+	"require_password":"Você deve informar uma senha"
+}

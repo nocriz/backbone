@@ -1,0 +1,9 @@
+{
+  "system": {
+  	"type":"backbone",
+  	"language":"pt",
+    "restfulUrl":"../src",
+    "defaultPage":"wines",
+    "per_page":12
+  }
+}

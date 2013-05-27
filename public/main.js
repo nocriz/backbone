@@ -47,13 +47,14 @@ require.config({
 require([
 
   // Load our app module and pass it to our definition function
-  'app'
+  'app',
+  'config'
 
   // Some plugins have to be loaded in order due to their non AMD compliance
   // Because these scripts are not "modules" they do not pass any values to the definition function below
-], function(App){
+], function(App,Config){
   
-  //Config.loadSettigns('config/settigns.json');
+  Config.loadConfig('config');
   // The "app" dependency is passed in as "App"
   // Again, the other dependencies passed in are not "AMD" therefore don't pass a parameter to this function
   App.initialize();

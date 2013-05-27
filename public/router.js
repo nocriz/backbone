@@ -7,56 +7,15 @@ define([
 ], function(Config, $, _, Backbone){
 
   var AppRouter = Backbone.Router.extend({
-   /*
-   showAction:function(){
-      var page = arguments[0];
-      var id = arguments[1];
-      if(page){
-         require(['pages/'+page+'/views/'+page],function (View) {
-              if(!id){
-                View.render();
-              }else{
-                View.render(id);
-              }
-         });
+    redirect:function(arg){
+      var defaultPage = Config.settings.system.defaultPage;
+      console.info(arg[0]);
+      if(arg.length>1 || arg[0]!==defaultPage && typeof(Config.getCookie('authToken'))=='undefined'){
+        this.navigate('//ir/'+defaultPage, true);
+        window.location.reload();
       }
     },
-    */
-    /*
-    showAbout:function(){
-      var page = arguments[0];
-      if(page){
-         require(['pages/'+page+'/views/about'],function (View) {
-              View.render();
-         });
-      }
-    },
-    */
-    /*
-    showPage:function(){
-     var page = arguments[0];
-     var num = arguments[1];
-      if(page){
-         require(['pages/'+page+'/views/'+page],function (View) {
-              View.render();
-              View.page(num);
-         });
-      }
-    },
-    showAdd:function(){
-      var page = arguments[0];
-      if(page){
-         require(['pages/'+page+'/views/'+page],function (View) {
-            View.add();
-         });
-      }
-    },
-    showDefault:function(){
-      this.navigate('//ir/wines', true);
-    },
-    */
     _extractParameters: function(route, fragment) {
-      //console.info(fragment.split('/')[0]);
       var params = route.exec(fragment);
       params.shift();
       return params;
@@ -107,40 +66,6 @@ define([
     },
     hideAlert: function() {
         $('.alert').hide();
-    },
-    jsonResponse: function(code){
-      jsonCodes = [],
-      jsonCodes[400] = 'Unrecognized command',
-      jsonCodes[401] = 'Permission denied',
-      jsonCodes[402] = 'Missing argument',
-      jsonCodes[401] = 'Incorrect password',
-      jsonCodes[404] = 'Account not found',
-      jsonCodes[405] = 'Email not validated',
-      jsonCodes[408] = 'Token expired',
-      jsonCodes[411] = 'Insufficient privileges',
-      jsonCodes[500] = 'Internal server error';
-      return jsonCodes[code];
-    },
-    /*
-     * COOKIE HELPERS
-     */
-    getCookie: function(c_name) {
-        var i, x, y, ARRcookies = document.cookie.split(";");
-          
-          for (i = 0; i < ARRcookies.length; i++) {
-            x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
-            y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
-            x = x.replace(/^\s+|\s+$/g,"");
-            if (x === c_name) {
-              return unescape(y);
-            };
-          };
-    },
-    setCookie: function(c_name, value) {
-    var exdate = new Date();
-      exdate.setHours(exdate.getHours() + 1);
-      var c_value = escape(value) + "; expires=" + exdate.toUTCString();
-      document.cookie=c_name + "=" + c_value;
     }
   });
 
